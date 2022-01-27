@@ -1,11 +1,15 @@
+# x = x * a
+
 Z('i1')
 T('x', 'x0')
 Z('x')
-J('i1', 'a', 11)
+@loop
+J('i1', 'a', '@end')
 Z('i2')
 S('i1')
+    @innerloop
     S('x')
     S('i2')
-    J('i2', 'x0', 4)
-    J('x', 'x', 7)
-Z('end')
+    J('i2', 'x0', '@loop')
+    J('x',   'x', '@innerloop')
+@end

@@ -1,12 +1,30 @@
+# mod = x mod 3
+
 Z('mod')
 Z('k')
-J('k', 'a', 12)
-S('k')
-J('k', 'a', 11)
-S('k')
-J('k', 'a', 10)
-S('k')
-J(1,1,3)
+@loop
+    J('k', 'a', '@m1')
+    S('k')
+    J('k', 'a', '@m2')
+    S('k')
+    J('k', 'a', '@end')
+    S('k')
+    J(1,1,'@loop')
+@m2
 S('mod')
+@m1
 S('mod')
-Z('end')
+@end
+
+# explanation
+#while 1:
+#    if k == a:
+#        break
+#    k += 1
+#    if k == a:
+#        break
+#    k += 1
+#    if k == a:
+#        break
+#    k += 1
+#    div += 1

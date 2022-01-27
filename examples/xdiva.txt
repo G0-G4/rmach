@@ -1,9 +1,15 @@
-Z('i')
-J('i', 'a', 7)
-J('k', 'x', 9)
-S('k')
-S('i')
-J(1, 1, 2)
-S('div')
-J(1, 1, 1)
-Z('end')
+# div = x // a
+
+
+@loop
+Z('i') # i = 0
+@innerloop
+J('i', 'a', '@div') # if i == a goto div
+J('k', 'x', '@end') # if k == x goto end
+S('k') # k += 1
+S('i') # i += 1
+J(1, 1, '@innerloop') # goto innerloop
+@div
+S('div') # div += 1
+J(1, 1, '@loop') # goto loop
+@end

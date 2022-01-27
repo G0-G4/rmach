@@ -1,5 +1,8 @@
-J('a', 'x', 5)
-    S('a')
-    S('sub')
-J(1, 1, 1)
-Z('end')
+# sub = x - a
+
+@start
+J('a', 'x', '@end') # if a == x goto end
+    S('a') # a += 1
+    S('sub') # sub += 1
+J(1, 1, '@start') # goto start
+@end
